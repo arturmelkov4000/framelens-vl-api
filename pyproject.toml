@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "framelens-vl-api"
+version = "0.1.0"
+description = "FastAPI service for structured video-language model analysis."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "FrameLens VL API contributors" }]
+keywords = ["video", "vlm", "qwen", "fastapi", "multimodal"]
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "python-multipart>=0.0.9",
+  "pydantic>=2.8",
+  "requests>=2.32",
+  "openai>=1.50",
+]
+
+[project.optional-dependencies]
+transformers = [
+  "torch",
+  "torchvision",
+  "transformers>=4.57",
+  "accelerate>=1.0",
+  "qwen-vl-utils[decord]>=0.0.14",
+  "av",
+]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["framelens_vl_api*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
